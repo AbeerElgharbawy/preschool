@@ -1,0 +1,9 @@
+@push('pageVar')
+Classes
+@endpush
+@extends('layouts.pages')
+@push('content')
+@include('includes.classes')
+@include('includes.appointment')
+@include('includes.testimonial')
+@endpush
