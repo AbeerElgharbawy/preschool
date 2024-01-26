@@ -68,7 +68,6 @@ class TestimonialController extends Controller
         $testimonial = Testimonial::findOrFail($id);
         return view('admin.testimonial.updateTestimonial',compact('testimonial'));
     }
-
     /**
      * Update the specified resource in storage.
      */

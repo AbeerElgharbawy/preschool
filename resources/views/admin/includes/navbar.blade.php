@@ -9,13 +9,33 @@
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Testimonials
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="">Testimonials</a></li>
+          <li><a href="{{ route('testimonials') }}">Testimonials</a></li>
           <li><a href="{{ route('addTestimonial') }}">Add Testimonial</a></li>
-          <li><a href="">Trashed Testimonials</a></li>
+        </ul>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Teachers
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="{{ route('teachers') }}">Teachers</a></li>
+          <li><a href="{{ route('addTeacher') }}">Add Teacher</a></li>
+        </ul>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Classes
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="{{ route('classes') }}">Classrooms</a></li>
+          <li><a href="{{ route('addClass') }}">Add Class</a></li>
+        </ul>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Appointments
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="{{ route('showAppointments') }}">Appointments</a></li>
+          <li><a href="{{ route('addAppointment') }}">Add Appointment</a></li>
         </ul>
       </li>
-      <li><a href="#">Page 2</a></li>
-      <li><a href="#">Page 3</a></li>
+      <li><a href="{{route('showContacts')}}">Unread Messages ({{ $unreadCount }})</a></li>
     </ul>
   </div>
-</nav>
+</nav>  
+        

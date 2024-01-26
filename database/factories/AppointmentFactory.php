@@ -17,7 +17,11 @@ class AppointmentFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'guardianName'=>$this->faker->name,
+            'guardianEmail' => $this->faker->unique()->safeEmail,
+            'childName' =>$this->faker->name,
+            'childAge'=>$this->faker->numberBetween(2,14),//
+            'message'=>$this->faker->paragraph,
         ];
     }
 }

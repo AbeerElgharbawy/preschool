@@ -34,8 +34,10 @@
                 <td><a href="deleteContact/{{ $contact->id }}" onclick="return confirm('Are you sure?')">Delete</a></td>
             </tr>
             @endforeach
+
         </tbody>
     </table>
+    {{$contacts->links()}}
     </div>
 </body>
 </html>

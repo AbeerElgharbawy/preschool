@@ -16,8 +16,15 @@ class ContactFactory extends Factory
      */
     public function definition(): array
     {
+        
+
+
         return [
-            //
+            //'guardianName'=>fake()->name,
+            'email' => $this->faker->unique()->safeEmail(),
+            'subject' =>$this->faker->name,
+            'name' =>$this->faker->name,
+            'message'=>$this->faker->paragraph,
         ];
     }
 }

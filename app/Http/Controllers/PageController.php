@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Testimonial;
+use App\Models\Classroom;
 use App\Models\Teacher;
 
 use Illuminate\Http\Request;
@@ -16,8 +17,9 @@ class PageController extends Controller
     {
         $testimonials=Testimonial::where('published',true)->latest()->take(3)->get(); //load data in testimonials variable
         $teachers=Teacher::where('published',true)->latest()->take(3)->get(); //load data in testimonials variable
+        $classes=Classroom::where('published',true)->latest()->take(3)->get(); //load data in testimonials variable
         // return view('home',compact('teachers'));
-        return view('index', compact('testimonials','teachers')); //send data into testimonial blade file
+        return view('index', compact('testimonials','teachers','classes')); //send data into testimonial blade file
     }
     function about(){
         return view('about');

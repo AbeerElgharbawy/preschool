@@ -5,7 +5,7 @@ About Us
 @push('content')
 @include('includes.about')
 @include('includes.callToAction')
-@include('includes.team')
+{{-- @include('includes.team')--}}
 @endpush
 
 

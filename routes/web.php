@@ -7,7 +7,8 @@ use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\ClassRoomController;
-use App\Models\Classroom;
+use Illuminate\Support\Facades\Auth;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +25,7 @@ Route::get('/', function () {
 });
 // Route::get('home',[pageController::class,'home'])->name('home');
 Route::get('about',[pageController::class,'about'])->name('about');
-Route::get('index',[pageController::class,'testHome'])->name('home');
+Route::get('index',[pageController::class,'testHome'])->name('index');
 Route::get('team',[pageController::class,'team'])->name('team');
 Route::get('testimonial',[pageController::class,'testimonial'])->name('testimonial');
 Route::get('contact',[pageController::class,'contact'])->name('contact');
@@ -33,9 +34,12 @@ Route::get('classes',[ClassRoomController::class,'classList'])->name('classes');
 Route::get('facilities',[pageController::class,'facilities'])->name('facilities');
 // Route::get('home',[pageController::class,'team'])->name('team');
 Route::get('callToAction',[pageController::class,'callToAction'])->name('callToAction');
+Route::get('team',[TeacherController::class,'teacherList'])->name('team');
+
 Route::fallback(pageController::class)->name('404');
 
 //testimonials
+Route::prefix('')->group(function () {
 
 Route::get('addTestimonial',[TestimonialController::class,'create'])->name('addTestimonial');
 Route::post('storeTestimonial',[TestimonialController::class,'store'])->name("storeTestimonial");
@@ -52,8 +56,6 @@ Route::get('addAppointment',[AppointmentController::class,'create'])->name('addA
 Route::post('storeAppointment',[AppointmentController::class,'store'])->name('storeAppointment');
 Route::get('showAppointments',[AppointmentController::class,'index'])->name('showAppointments');
 Route::get('deleteAppointment/{id}',[AppointmentController::class,'destroy']);
-//     return view('admin.testimonial.testimonials');
-// })->name("testimonials");
 
 //contact
 Route::post('contactMail',[ContactController::class,'contactMail']);
@@ -68,7 +70,6 @@ Route::get('showTeacher/{id}',[TeacherController::class,'show'])->name('showTeac
 Route::get('update/{id}',[TeacherController::class,'edit']);
 Route::put('updateTeacher/{id}',[TeacherController::class,'update'])->name('updateTeacher');
 Route::get('deleteTeacher/{id}',[TeacherController::class,'destroy']);
-Route::get('team',[TeacherController::class,'teacherList'])->name('team');
 
 //classes
 // Route::get('addClass',function(){
@@ -82,8 +83,8 @@ Route::get('update/{id}',[ClassRoomController::class,'edit']);
 Route::put('updateClass/{id}',[ClassRoomController::class,'update'])->name('updateClass');
 Route::get('deleteClass/{id}',[TeacherController::class,'destroy']);
 // Route::get('classlist',[TeacherController::class,'teacherList'])->name('team');
+})->middleware('verified');
 
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Auth::routes(['verify'=>true]);
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware('verified')->name('home');

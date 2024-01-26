@@ -31,6 +31,7 @@ class ClassRoomController extends Controller
         $testimonials=Testimonial::get(); 
         return view('classes', compact('classes','testimonials','appointments')); 
     }
+    
 
     /**
      * Show the form for creating a new resource.

@@ -15,7 +15,9 @@ class ContactController extends Controller
      */
     public function index()
     {
-        $contacts=Contact::get(); //load data in contacts variable
+        $contacts=Contact::paginate(3); //load data in contacts variable
+        // $unreadCount = Contact::where('unread', 0)->count();
+        // $contacts = Contact::all();
         return view('admin.contacts', compact('contacts'));
     }
 
@@ -41,6 +43,8 @@ class ContactController extends Controller
     public function show(string $id)
     {
         $contacts=Contact::findOrFail($id);
+        $contacts->unread = 1;
+        $contacts->save();
         return view('admin.showContact', compact('contacts'));
     }
 

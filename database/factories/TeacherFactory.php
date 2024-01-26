@@ -17,10 +17,10 @@ class TeacherFactory extends Factory
     public function definition(): array
     {
         return [
-            'name'=>fake()->name,
-            'subject' =>fake()->name,
-            'image'=>fake()->imageUrl(640,480,'animals',true),
-            'published'=>fake()->numberBetween(0,1),
+            'name'=>$this->faker->name,
+            'subject' =>$this->faker->name,
+            'image'=>$this->faker->imageUrl(640,480,'animals',true),
+            'published'=>$this->faker->numberBetween(0,1),
             'facebook' => $this->faker->unique()->safeEmail,
             'twitter' => $this->faker->unique()->safeEmail,
             'instagram' => $this->faker->unique()->safeEmail,
